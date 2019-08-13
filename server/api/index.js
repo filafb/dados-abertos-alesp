@@ -4,6 +4,7 @@ const router = express.Router()
 module.exports = router
 
 router.use('/upload', require('./routes/upload'))
+router.use('/comissoes', require('./routes/comissoes'))
 
 
 router.use((req, res, next) => {

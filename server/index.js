@@ -31,7 +31,7 @@ const startListening = () => {
   app.listen(PORT, () => console.log(`Shaking up on port ${PORT}`))
 }
 
-const syncDB = () => db.sync({force: true})
+const syncDB = () => db.sync()
 
 async function bootApp() {
   await syncDB()
