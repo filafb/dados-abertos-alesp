@@ -14,10 +14,11 @@ process.on('message', async ({file}) => {
     //await Comissoes.create(one)
     // const promises = await Comissoes.bulkUpdateOrCreate(parsedXML.Comissoes.Comissao)
     // console.log('promises', promises)
-    process.send({parsedXML})
+    const countComissoes = comissoes.length
+    process.send({created: countComissoes})
 
   } catch (e) {
     console.log(e)
-    process.send({e})
+    process.send({error: e})
   }
 })

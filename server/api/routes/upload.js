@@ -12,9 +12,14 @@ module.exports = router
 router.post('/comissoes', upload.single('file'), (req, res, next) => {
   const parserComissoes = fork(path.join(appDirectory, 'xmlParser', 'comissoes.js'))
   parserComissoes.send({file: req.file.buffer.toString()})
-  parserComissoes.on('message', ({parsedXML, e}) => {
+  parserComissoes.on('message', ({created, error}) => {
     parserComissoes.kill()
-    res.json(parsedXML || e)
+    if(error) {
+      error.message = 'Could not update db'
+      next(error)
+    } else {
+      res.status(201).json({created})
+    }
   })
 })
 
