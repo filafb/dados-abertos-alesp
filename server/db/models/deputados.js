@@ -83,9 +83,9 @@ const Deputados = db.define('deputado', {
     }
   },
   Matricula: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     set(val) {
-      this.setDataValue('Matricula', val[0])
+      this.setDataValue('Matricula', Number(val[0]))
     }
   },
   IdSPL: {

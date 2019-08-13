@@ -31,7 +31,9 @@ const startListening = () => {
   app.listen(PORT, () => console.log(`Shaking up on port ${PORT}`))
 }
 
-const syncDB = () => db.sync()
+const syncDB = () => db.sync(
+  {force: true} // drop all tables every time server restart
+  )
 
 async function bootApp() {
   await syncDB()
