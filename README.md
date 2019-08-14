@@ -24,16 +24,16 @@ Then:
 - Voilà => http://localhost:3000/
 
 # Upload files:
-## Comissoes Permanentes
-[_comissoes.xml_](http://www.al.sp.gov.br/repositorioDados/processo_legislativo/comissoes.xml)
+
+_Comissoes Permanentes_ => [_comissoes.xml_](http://www.al.sp.gov.br/repositorioDados/processo_legislativo/comissoes.xml)
+
+_Deputados_ => [_deputados.xml_](http://www.al.sp.gov.br/repositorioDados/deputados/deputados.xml)
+
+*Comissões Membros* => [_comissoes_membros.xml_](http://www.al.sp.gov.br/repositorioDados/processo_legislativo/comissoes_membros.xml) <br>
+This files must be uploaded after comissoes.xml and deputados.xml, since it contains foreign keys linking it to those.
 
 
-## Deputados
-
-[_deputados.xml_](http://www.al.sp.gov.br/repositorioDados/deputados/deputados.xml)
-
-
-## API
+# APIs
 
 * _/api/comissoes_ => Lista todas as comissões
 * _/api/deputados_ => Lista todos os deputados
