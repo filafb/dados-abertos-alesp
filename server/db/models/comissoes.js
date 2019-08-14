@@ -10,6 +10,7 @@ const Comissoes = db.define('comissao', {
   },
   IdComissao: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
     unique: true,
     allowNull: false,
     set (val) {

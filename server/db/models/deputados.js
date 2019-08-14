@@ -4,6 +4,7 @@ const db = require( '../db')
 const Deputados = db.define('deputado', {
   IdDeputado: {
     type: Sequelize.INTEGER,
+    primaryKey: true,
     unique: true,
     allowNull: false,
     set(val) {
