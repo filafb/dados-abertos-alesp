@@ -32,7 +32,7 @@ const startListening = () => {
 }
 
 const syncDB = () => db.sync(
-  {force: true} // drop all tables every time server restart
+  //{force: true} // drop all tables every time server restart
   )
 
 async function bootApp() {
