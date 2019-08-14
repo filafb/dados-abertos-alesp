@@ -91,6 +91,7 @@ const Deputados = db.define('deputado', {
   },
   IdSPL: {
     type: Sequelize.INTEGER,
+    unique: true,
     set(val) {
       this.setDataValue('IdSPL', Number(val[0]))
     }
