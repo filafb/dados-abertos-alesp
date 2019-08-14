@@ -6,7 +6,7 @@ const { fork } = require('child_process')
 const path = require('path')
 const fs = require('fs')
 const appDirectory = fs.realpathSync(process.cwd())
-const xmlParserFolder = 'xmlParser'
+const childProcessFolder = 'childProcess'
 
 module.exports = router
 
@@ -15,7 +15,7 @@ router.use(upload.single('file'))
 
 router.post('/:arquivo', (req, res, next) => {
   const { arquivo } = req.params
-  const parserComissoes = fork(path.join(appDirectory, xmlParserFolder, `${arquivo}.js`))
+  const parserComissoes = fork(path.join(appDirectory, childProcessFolder, `${arquivo}.js`))
   parserComissoes.send({file: req.file.buffer.toString()})
   parserComissoes.on('message', ({created, error}) => {
     parserComissoes.kill()
