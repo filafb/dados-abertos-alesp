@@ -3,7 +3,7 @@
   - React
 
 ## Back-end
-  - Node (>10)
+  - Node (10.2.1)
   - Postgres
   - Express
   - Sequelize
@@ -37,4 +37,4 @@ This files must be uploaded after comissoes.xml and deputados.xml, since it cont
 
 * _/api/comissoes_ => Lista todas as comissões
 * _/api/deputados_ => Lista todos os deputados
-* _/api/comissoes_membros => Lista de todos os membros por comissão
+* _/api/comissoes_membros_ => Lista de todos os membros por comissão
