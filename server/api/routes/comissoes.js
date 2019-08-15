@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Comissoes, ComissoesMembros, Deputados } = require('../../db/models')
+const { Comissoes, ComissoesMembros } = require('../../db/models')
 
 module.exports = router
 
