@@ -36,7 +36,7 @@ const Upload = ({apiLocation, text}) => {
         <div style={{display: 'flex', alignItems: 'center'}}>
           <form onSubmit={upload}>
             <input type='file' name='file' onChange={getFile} />
-            <button type="submit">Upload xml</button>
+            <button disabled={loading} type="submit">Upload xml</button>
           </form>
           {loading && <h4 style={{marginLeft: '20px'}}>Loading File</h4>}
           {error && <h4 style={{marginLeft: '20px', color: 'red'}}>Houve um erro no upload</h4>}
