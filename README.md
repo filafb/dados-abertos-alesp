@@ -43,6 +43,6 @@ _Este arquivo deve ser uploaded depois de Deputados e Comissoes Reunioes_
 
 * _/api/comissoes_ => Lista todas as comissões
 * _/api/deputados_ => Lista todos os deputados
-* _/api/comissoes/membros_ => Lista de todos os membros por comissão na legislatura #19
-* _/api/comissoes/reunioes_ => Lista de todas as reuniões
+* _/api/comissoes/membros_ => Lista de todos os membros por comissão
+* _/api/comissoes/reunioes_ => Lista de todas as reuniões das comissões na legislatura #19
 * _/api/comissoes/reunioes/presencas_ => Lista de presenças em toda as reuniões na legislatura #19
