@@ -30,11 +30,19 @@ _Comissoes Permanentes_ => [_comissoes.xml_](http://www.al.sp.gov.br/repositorio
 _Deputados_ => [_deputados.xml_](http://www.al.sp.gov.br/repositorioDados/deputados/deputados.xml)
 
 *Comissões Membros* => [_comissoes_membros.xml_](http://www.al.sp.gov.br/repositorioDados/processo_legislativo/comissoes_membros.xml) <br>
-This files must be uploaded after comissoes.xml and deputados.xml, since it contains foreign keys linking it to those.
+_Este arquivo deve ser uploaded depois de comissoes permanentes e deputados_
+
+*Comissões Reuniões* => [_comissoes_permanentes_reunioes.xml_](http://www.al.sp.gov.br/repositorioDados/processo_legislativo/comissoes_permanentes_reunioes.xml) <br>
+_Este arquivo deve ser uploaded depois de comissoes permanentes_
+
+*Comissões Presenças* => [_comissoes_permanentes_presencas.xml_](http://www.al.sp.gov.br/repositorioDados/processo_legislativo/comissoes_permanentes_presencas.xml)
+_Este arquivo deve ser uploaded depois de Deputados e Comissoes Reunioes_
 
 
 # APIs
 
 * _/api/comissoes_ => Lista todas as comissões
 * _/api/deputados_ => Lista todos os deputados
-* _/api/comissoes_membros_ => Lista de todos os membros por comissão
+* _/api/comissoes/membros_ => Lista de todos os membros por comissão na legislatura #19
+* _/api/comissoes/reunioes_ => Lista de todas as reuniões
+* _/api/comissoes/reunioes/presencas_ => Lista de presenças em toda as reuniões na legislatura #19
