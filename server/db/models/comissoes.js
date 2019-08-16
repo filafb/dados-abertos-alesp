@@ -35,6 +35,8 @@ const Comissoes = db.define('comissao', {
       this.setDataValue('DescricaoComissao', val[0])
     }
   }
+},{
+  tableName: 'comissoes'
 })
 
 
