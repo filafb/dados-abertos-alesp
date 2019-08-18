@@ -41,4 +41,10 @@ async function bootApp() {
   await startListening()
 }
 
-bootApp()
+if(require.main === module) {
+  bootApp()
+} else {
+  createApp()
+}
+
+module.exports = app

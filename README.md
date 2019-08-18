@@ -13,7 +13,7 @@
 
 `npm run install`
 
-Create a DB named `dados-abertos`
+Create a DB named `dados-abertos` and `dados-abertos-test`
   - using createdb utility:
     `createdb dados-abertos`
   - using `psql`

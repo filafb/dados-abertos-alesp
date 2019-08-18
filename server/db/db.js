@@ -1,5 +1,13 @@
 const Sequelize = require("sequelize")
 
-const db = new Sequelize(process.env.DATABASE_URL || `postgres://localhost:5432/dados-abertos`, { logging: false })
+const dbName = `dados-abertos${(process.env.NODE_ENV === 'test' ? '-test' : '')}`
+
+const db = new Sequelize(process.env.DATABASE_URL || `postgres://localhost:5432/${dbName}`, { logging: false })
+
 
 module.exports = db
+
+
+if (process.env.NODE_ENV === 'test') {
+  afterAll(() => db.close())
+}
