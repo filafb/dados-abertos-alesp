@@ -11,12 +11,16 @@ process.on('message', async ({file}) => {
     for( let i = 0; i < allComissoes.length; i++) {
       const DataFimComissao = allComissoes[i].DataFimComissao ? new Date(allComissoes[i].DataFimComissao[0]) : null
       if(legislaturaBeginning < DataFimComissao || !DataFimComissao ) {
-        promisesComissoes.push(Comissoes.create(allComissoes[i]))
+        promisesComissoes.push(Comissoes.createNewOrUpdate(allComissoes[i]))
       }
     }
-    await Promise.all(promisesComissoes)
-    const countComissoes = promisesComissoes.length
-    process.send({created: countComissoes})
+    const comissoes =  await Promise.all(promisesComissoes)
+    const summary = comissoes.reduce((result, curr) => {
+      if(curr.created) result.created++
+      if(curr.updated) result.updated++
+      return result
+    }, {created: 0, updated: 0})
+    process.send(summary)
 
   } catch (e) {
     console.log(e)

@@ -17,13 +17,13 @@ router.post('/:arquivo', (req, res, next) => {
   const { arquivo } = req.params
   const parserComissoes = fork(path.join(appDirectory, childProcessFolder, `${arquivo}.js`))
   parserComissoes.send({file: req.file.buffer.toString()})
-  parserComissoes.on('message', ({created, error}) => {
+  parserComissoes.on('message', ({created, updated, error}) => {
     parserComissoes.kill()
     if(error) {
       error.message = 'Could not update db'
       next(error)
     } else {
-      res.status(201).json({created})
+      res.status(201).json({created, updated})
     }
   })
 })

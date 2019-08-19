@@ -4,36 +4,41 @@ import Upload from './Upload';
 const filesToUpload = [
   {
     id: 1,
-    apiLocation: 'comissoes',
+    fileName: 'comissoes',
     text: 'Comissões Permanentes',
+    restAPI: 'comissoes'
   },
   {
     id: 2,
-    apiLocation: 'deputados',
+    fileName: 'deputados',
     text: 'Deputados',
+    restAPI: 'deputados'
   },
   {
     id: 3,
-    apiLocation: 'comissoes_membros',
+    fileName: 'comissoes_membros',
     text: 'Comissões Membros',
+    restAPI: 'comissoes/membros'
   },
   {
     id: 4,
-    apiLocation: 'comissoes_permanentes_reunioes',
+    fileName: 'comissoes_permanentes_reunioes',
     text: 'Reuniões das Comissões',
+    restAPI: 'comissoes/reunioes'
   },
   {
     id: 5,
-    apiLocation: 'comissoes_permanentes_presencas',
+    fileName: 'comissoes_permanentes_presencas',
     text: 'Presenças em comissões',
+    restAPI: 'comissoes/reunioes/presencas'
   },
 ];
 
 function Main() {
   return (
     <React.Fragment>
-      {filesToUpload.map(({apiLocation, text, id}) => (
-        <Upload apiLocation={apiLocation} text={text} key={id} />
+      {filesToUpload.map(({fileName, text, id, restAPI}) => (
+        <Upload fileName={fileName} text={text} restAPI={restAPI} key={id} />
       ))}
     </React.Fragment>
   );
