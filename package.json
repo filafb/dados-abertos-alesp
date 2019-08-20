@@ -45,8 +45,24 @@
     "webpack-cli": "^3.3.6"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/config/tests/jest.init.js"
+    "projects": [
+      {
+        "displayName": "Front End",
+        "roots": ["<rootDir>/client/"],
+        "setupFiles": [
+          "<rootDir>/config/tests/jest.init.js"
+        ]
+      },
+      {
+        "displayName": "Back End",
+        "testEnvironment": "node",
+        "roots": ["<rootDir>/server/", "<rootDir>/childProcess/"],
+        "setupFiles": [
+          "<rootDir>/config/tests/jest.init.js"
+        ],
+        "globalSetup": "<rootDir>/config/tests/setup.js",
+        "globalTeardown": "<rootDir>/config/tests/teardown.js"
+      }
     ]
   }
 }

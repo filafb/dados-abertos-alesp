@@ -7,7 +7,3 @@ const db = new Sequelize(process.env.DATABASE_URL || `postgres://localhost:5432/
 
 module.exports = db
 
-
-if (process.env.NODE_ENV === 'test') {
-  afterAll(() => db.close())
-}
