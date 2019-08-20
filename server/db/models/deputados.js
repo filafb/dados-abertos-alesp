@@ -8,104 +8,104 @@ const Deputados = db.define('deputado', {
     unique: true,
     allowNull: false,
     set(val) {
-      this.setDataValue('IdDeputado', Number(val[0]))
+      this.setDataValue('IdDeputado', Array.isArray(val) ? Number(val[0]) : Number(val))
     }
   },
   NomeParlamentar: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('NomeParlamentar', val[0])
+      this.setDataValue('NomeParlamentar', Array.isArray(val) ? val[0] : val)
     }
   },
   Aniversario: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Aniversario', val[0])
+      this.setDataValue('Aniversario', Array.isArray(val) ? val[0] : val)
     }
   },
   Partido: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Partido', val[0])
+      this.setDataValue('Partido', Array.isArray(val) ? val[0] : val)
     }
   },
   Situacao: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Situacao', val[0])
+      this.setDataValue('Situacao', Array.isArray(val) ? val[0] : val)
     }
   },
   Email: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Email', val[0])
+      this.setDataValue('Email', Array.isArray(val) ? val[0] : val)
     }
   },
   Sala: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Sala', val[0])
+      this.setDataValue('Sala', Array.isArray(val) ? val[0] : val)
     }
   },
   Telefone: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Telefone', val[0])
+      this.setDataValue('Telefone', Array.isArray(val) ? val[0] : val)
     }
   },
   PlacaVeiculo: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('PlacaVeiculo', val[0])
+      this.setDataValue('PlacaVeiculo', Array.isArray(val) ? val[0] : val)
     }
   },
   Biografia: {
     type: Sequelize.TEXT,
     set(val) {
-      this.setDataValue('Biografia', val[0])
+      this.setDataValue('Biografia', Array.isArray(val) ? val[0] : val)
     }
   },
   HomePage: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('HomePage', val[0])
+      this.setDataValue('HomePage', Array.isArray(val) ? val[0] : val)
     }
   },
   Andar: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Andar', val[0])
+      this.setDataValue('Andar', Array.isArray(val) ? val[0] : val)
     }
   },
   Fax: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Fax', val[0])
+      this.setDataValue('Fax', Array.isArray(val) ? val[0] : val)
     }
   },
   Matricula: {
     type: Sequelize.INTEGER,
     set(val) {
-      this.setDataValue('Matricula', Number(val[0]))
+      this.setDataValue('Matricula', Array.isArray(val) ? Number(val[0]) : Number(val))
     }
   },
   IdSPL: {
     type: Sequelize.INTEGER,
     unique: true,
     set(val) {
-      this.setDataValue('IdSPL', Number(val[0]))
+      this.setDataValue('IdSPL', Array.isArray(val) ? Number(val[0]) : Number(val))
     }
   },
   IdUA: {
     type: Sequelize.INTEGER,
     set(val) {
-      this.setDataValue('IdUA', Number(val[0]))
+      this.setDataValue('IdUA', Array.isArray(val) ? Number(val[0]) : Number(val))
     }
   },
   PathFoto: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('PathFoto', val[0])
+      this.setDataValue('PathFoto', Array.isArray(val) ? val[0] : val)
     }
   }
 })
