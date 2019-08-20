@@ -1,14 +1,6 @@
 const { db } = require('../')
 const Comissoes = db.model('comissao')
 
-beforeAll(() => {
-  return db.sync({force: true})
-})
-
-afterAll(() => {
-  return db.drop()
-})
-
 const comissaoArr = {
   IdComissao: ['103'],
   NomeComissao: ['Mesa'],
@@ -24,12 +16,16 @@ const comissao = {
 }
 
 describe('Comissoes', () => {
-  beforeEach(() => {
-    return db.sync({force:true})
-  })
+  beforeEach(() => db.sync({force: true}))
+
 
   test('Can deal with inputs placed inside an array', async () => {
     const newEntry = await Comissoes.create(comissaoArr)
+    expect(newEntry).toMatchObject(comissao)
+  } )
+
+  test('and inputs out of a array', async () => {
+    const newEntry = await Comissoes.create(comissao)
     expect(newEntry).toMatchObject(comissao)
   } )
 
