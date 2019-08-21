@@ -1,5 +1,5 @@
-const { db } = require('../')
-const Comissoes = db.model('comissao')
+const { Comissoes } = require('./')
+//const { db } = require('../')
 
 const comissaoArr = {
   IdComissao: ['103'],
@@ -15,8 +15,14 @@ const comissao = {
   DescricaoComissao: 'Uma definicao generica'
 }
 
+beforeEach(() => Comissoes.destroy({
+  where: {},
+  truncate: true,
+  cascade: true
+  }))
+
 describe('Comissoes', () => {
-  beforeEach(() => db.sync({force: true}))
+
 
 
   test('Can deal with inputs placed inside an array', async () => {

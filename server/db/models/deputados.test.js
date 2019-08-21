@@ -1,5 +1,5 @@
-const { db } = require('../')
-const Deputados = db.model('deputado')
+const { Deputados } = require('./')
+//const { db } = require('../')
 
 // beforeAll(async () => {
 //   await db.sync({ force: true })
@@ -49,8 +49,13 @@ const deputado = {
   PathFoto: 'http://www3.al.sp.gov.br/repositorio/deputadoPortal/fotos/20190315-153714-id=518-PEQ.png',
 }
 
+beforeEach(() => Deputados.destroy({
+  where: {},
+  truncate: true,
+  cascade: true
+  }))
+
 describe('Deputados Model', () => {
-  beforeEach(() => db.sync({force:true}))
 
   test('Can deal with inputs placed inside an array', async () => {
     const newDeputadoEntry = await Deputados.create(deputadoArr)
