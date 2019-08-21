@@ -110,4 +110,25 @@ const Deputados = db.define('deputado', {
   }
 })
 
+Deputados.createNewOrUpdate = async function (deputado) {
+  const id = Array.isArray(deputado.IdDeputado) ? deputado.IdDeputado[0] : deputado.IdDeputado
+
+  let created, deputadoInstance
+  try {
+    [deputadoInstance, created] = await Deputados.findOrCreate({ where: {
+      IdDeputado: id
+    },
+    defaults: deputado
+  })
+  } catch (e) {
+    console.log(e)
+  }
+  let updated = false
+  if(!created) {
+    let { _changed } = await deputadoInstance.update(deputado)
+    updated = !!Object.keys(_changed).length
+  }
+  return {created, updated}
+}
+
 module.exports = Deputados
