@@ -16,12 +16,16 @@ process.on('message', async ({file}) => {
       const id = Number(allComissoesMembros[i].IdMembro[0])
       const dataFimParticipacao = allComissoesMembros[i].DataFim ? new Date(allComissoesMembros[i].DataFim) : null
       if(comissoesLegislaturaAtual.indexOf(comissaoId) !== -1 && getDeputadosIdSPL.indexOf(id) !== -1 && (dataFimParticipacao > legislaturaBeginning || !dataFimParticipacao)) {
-        promisesComissoesMembros.push(ComissoesMembros.create(allComissoesMembros[i]))
+        promisesComissoesMembros.push(ComissoesMembros.createNewOrUpdate(allComissoesMembros[i]))
       }
     }
-    await Promise.all(promisesComissoesMembros)
-    const countComissoesMembros = promisesComissoesMembros.length
-    process.send({created: countComissoesMembros})
+    const comissoesMembros = await Promise.all(promisesComissoesMembros)
+    const summary = comissoesMembros.reduce((result, curr) => {
+      if(curr.created) result.created++
+      if(curr.updated) result.updated++
+      return result
+    }, {created: 0, updated: 0})
+    process.send(summary)
 
   } catch (e) {
     console.log(e)
