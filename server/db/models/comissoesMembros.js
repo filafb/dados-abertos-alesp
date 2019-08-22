@@ -34,4 +34,26 @@ const ComissoesMembros = db.define('comissoes-membro', {
   }
 })
 
+ComissoesMembros.createNewOrUpdate = async function(comissaoMembro) {
+  const IdMembro = Array.isArray(comissaoMembro.IdMembro) ? comissaoMembro.IdMembro[0] : comissaoMembro.IdMembro
+  const IdComissao = Array.isArray(comissaoMembro.IdComissao) ? comissaoMembro.IdComissao[0] : comissaoMembro.IdComissao
+  const DataInicio = Array.isArray(comissaoMembro.DataInicio) ? comissaoMembro.DataInicio[0] : comissaoMembro.DataInicio
+  let created, comisssaoMembroInstance
+  try {
+    [comisssaoMembroInstance, created] = await ComissoesMembros.findOrCreate({where: {
+      IdMembro,
+      IdComissao,
+      DataInicio
+    }, defaults: comissaoMembro})
+  } catch (e) {
+    console.log(e)
+  }
+  let updated = false
+  if(!created) {
+    let { _changed } = await comisssaoMembroInstance.update(comissaoMembro)
+    updated = !!Object.keys(_changed).length
+  }
+  return { created, updated }
+}
+
 module.exports = ComissoesMembros
