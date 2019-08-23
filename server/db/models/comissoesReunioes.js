@@ -8,60 +8,64 @@ const ComissoesReunioes = db.define('reunião', {
     unique: true,
     allowNull: false,
     set(val) {
-      this.setDataValue('IdReuniao', Number(val[0]))
+      this.setDataValue('IdReuniao', Array.isArray(val) ? Number(val[0]) : Number(val))
     },
   },
   IdPauta: {
     type: Sequelize.INTEGER,
     set(val) {
-      this.setDataValue('IdPauta', Number(val[0]))
+      this.setDataValue('IdPauta', Array.isArray(val) ? Number(val[0]) : Number(val))
     }
   },
   NrLegislatura: {
     type: Sequelize.INTEGER,
     set(val) {
-      this.setDataValue('NrLegislatura', Number(val[0]))
+      this.setDataValue('NrLegislatura', Array.isArray(val) ? Number(val[0]) : Number(val))
     }
   },
   NrConvocacao: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('NrConvocacao', val[0])
+      this.setDataValue('NrConvocacao', Array.isArray(val) ? val[0] : val)
     }
   },
   TipoConvocacao: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('TipoConvocacao', val[0])
+      this.setDataValue('TipoConvocacao', Array.isArray(val) ? val[0] : val)
     }
   },
   Data: {
     type: Sequelize.DATE,
     set(val) {
-      this.setDataValue('Data', val[0])
+      this.setDataValue('Data', Array.isArray(val) ? val[0] : val)
     }
   },
   CodSituacao: {
     type: Sequelize.STRING,
     set(val){
-      this.setDataValue('CodSituacao', val[0])
+      this.setDataValue('CodSituacao', Array.isArray(val) ? val[0] : val)
     }
   },
   Situacao: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Situacao', val[0])
+      this.setDataValue('Situacao', Array.isArray(val) ? val[0] : val)
     }
   },
   Presidente: {
     type: Sequelize.STRING,
     set(val) {
-      this.setDataValue('Presidente', val[0])
+      this.setDataValue('Presidente', Array.isArray(val) ? val[0] : val)
     }
   }
 },{
   tableName: 'reuniões'
 })
+
+ComissoesReunioes.Realizadas = function () {
+  return ComissoesReunioes.findAll({where: {Situacao: 'REALIZADA'}})
+}
 
 
 module.exports = ComissoesReunioes
