@@ -20,6 +20,7 @@
     "pg-hstore": "^2.3.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
     "sequelize": "^5.12.3",
     "xml2js": "^0.4.19"
   },
@@ -48,7 +49,9 @@
     "projects": [
       {
         "displayName": "Front End",
-        "roots": ["<rootDir>/client/"],
+        "roots": [
+          "<rootDir>/client/"
+        ],
         "setupFiles": [
           "<rootDir>/config/tests/jest.init.js"
         ]
@@ -56,7 +59,10 @@
       {
         "displayName": "Back End",
         "testEnvironment": "node",
-        "roots": ["<rootDir>/server/", "<rootDir>/childProcess/"],
+        "roots": [
+          "<rootDir>/server/",
+          "<rootDir>/childProcess/"
+        ],
         "setupFiles": [
           "<rootDir>/config/tests/jest.init.js"
         ],
