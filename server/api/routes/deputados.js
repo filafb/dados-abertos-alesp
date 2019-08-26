@@ -17,3 +17,17 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:IdDeputado', async (req, res, next) => {
+  const { IdDeputado } = req.params
+  try {
+    const deputado = await Deputados.findAll({
+      where: {
+        IdDeputado
+      }
+    })
+    res.json(deputado[0])
+  } catch (err) {
+    next(err)
+  }
+})
