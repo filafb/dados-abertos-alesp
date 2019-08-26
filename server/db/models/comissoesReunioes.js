@@ -63,8 +63,8 @@ const ComissoesReunioes = db.define('reunião', {
   tableName: 'reuniões'
 })
 
-ComissoesReunioes.Realizadas = function () {
-  return ComissoesReunioes.findAll({where: {Situacao: 'REALIZADA'}})
+ComissoesReunioes.realizadas = function (IdComissao) {
+  return ComissoesReunioes.findAll({where: {IdComissao,Situacao: 'REALIZADA'}})
 }
 
 
