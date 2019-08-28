@@ -1,5 +1,7 @@
+const isDev = process.env.NODE_ENV === 'development'
+
 module.exports = {
-  mode: 'development',
+  mode: isDev ? 'development' : 'production',
   entry: ['@babel/polyfill', './client/app'],
   output: {
     path: __dirname,
@@ -8,7 +10,7 @@ module.exports = {
   resolve: {
     extensions:['.js', 'jsx']
   },
-  devtool: 'source-map',
+  devtool: isDev ? 'source-map' : false,
   module: {
     rules: [
       {
