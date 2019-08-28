@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const ComissoesReunioes = require('./comissoesReunioes')
+const ComissoesPresenca = require('./comissoesPresenca')
+const Op = Sequelize.Op
 
 const ComissoesMembros = db.define('comissoes-membro', {
   DataInicio: {
@@ -54,6 +57,26 @@ ComissoesMembros.createNewOrUpdate = async function(comissaoMembro) {
     updated = !!Object.keys(_changed).length
   }
   return { created, updated }
+}
+
+ComissoesMembros.prototype.getReunioesAndPresenca = function () {
+  return ComissoesReunioes.findAll({
+    where: {
+      IdComissao: this.IdComissao,
+      Situacao: 'REALIZADA',
+      Data: {
+        [Op.gte]: this.DataInicio,
+        [Op.lte]: this.DataFim ? this.DataFim : new Date()
+      }
+    },
+    include: [ {
+      model: ComissoesPresenca,
+      where: {
+        IdDeputado: this.IdMembro
+      },
+      required: false
+    }]
+  })
 }
 
 module.exports = ComissoesMembros
