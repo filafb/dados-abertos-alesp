@@ -23,7 +23,7 @@ export default function ParticipaComissoes ({deputadoSPL}) {
 
   console.log('member', member)
   console.log('wasMember', wasMember)
-  console.log('t')
+
   return (
     <React.Fragment>
       <div>

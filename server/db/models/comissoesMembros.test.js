@@ -62,7 +62,7 @@ describe('Comissoes Membros', () => {
       const newDeputado = await Deputados.create(deputado)
       const newMembro = await ComissoesMembros.create(comissaoMembroWithMembro)
       expect(newMembro.IdMembro).toBe(newDeputado.IdSPL)
-      newDeputado.destroy()
+      await newDeputado.destroy()
     })
     test('and Comissoes Model', async () => {
       const comissaoMembroWithComissao = { ...comissaoMembro, IdComissao: comissao.IdComissao }
@@ -76,7 +76,7 @@ describe('Comissoes Membros', () => {
       const newComissao = await Comissoes.create(comissaoMembroWithComissao)
       const newComissaoMembro = await ComissoesMembros.create(comissaoMembroWithComissao)
       expect(newComissaoMembro.IdComissao).toBe(newComissao.IdComissao)
-      newComissao.destroy()
+      await newComissao.destroy()
     })
   })
   describe('has a class Method named Create New or Update', () => {
@@ -104,10 +104,10 @@ describe('Comissoes Membros', () => {
           truncate: true,
           cascade: true
         })
-        deputadoInstance.destroy()
-        comissaoInstance.destroy()
-        comissaoInstanceTwo.destroy()
-        deputadoInstanceTwo.destroy()
+        await deputadoInstance.destroy()
+        await comissaoInstance.destroy()
+        await comissaoInstanceTwo.destroy()
+        await deputadoInstanceTwo.destroy()
       })
 
       test('it creates a new instance if it is not on db', async () => {
